@@ -28,7 +28,7 @@ export class CarambarService {
 
 
     async addData(data: Model): Promise<Model> {
-        const currentData = await this.getAllData(); // ← lecture dynamique à jour
+        const currentData = await this.getAllData();
         currentData.push(data);
         await fs.writeFile(this.filePath, JSON.stringify(currentData, null, 2));
         return data;

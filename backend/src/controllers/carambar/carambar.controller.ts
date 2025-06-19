@@ -12,12 +12,12 @@ export class CarambarController {
     getAllData(): Promise<Model[]> {
         return this._carambarService.getAllData();
     }
-
     @Get('random')
     getDataRandom() {
         return this._carambarService.getDataRandom();
 
     }
+
     @Get(':id')
     getById(@Param('id') id: string): Promise<Model | undefined> {
         return this._carambarService.getById(id);
