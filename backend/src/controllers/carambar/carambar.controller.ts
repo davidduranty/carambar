@@ -13,7 +13,7 @@ export class CarambarController {
         return this._carambarService.getAllData();
     }
     @Get('random')
-    getDataRandom() {
+    getDataRandom(): Promise<Model> {
         return this._carambarService.getDataRandom();
 
     }
