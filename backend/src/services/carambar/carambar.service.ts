@@ -9,7 +9,16 @@ export class CarambarService {
     private filePath = path.join(process.cwd(), 'data', 'data.json');
 
     async getAllData(): Promise<Model[]> {
-        return dataFile
+        return dataFile;
+    }
+
+    async getDataRandom(): Promise<Model> {
+        const data = await this.getAllData();
+        if (data.length === 0) {
+            throw new Error('Aucune blague disponible.');
+        }
+        const randomIndex = Math.floor(Math.random() * data.length);
+        return data[randomIndex];
     }
 
     async getById(id: string): Promise<Model | undefined> {
@@ -17,17 +26,12 @@ export class CarambarService {
         return data.find(item => item.id === id);
     }
 
-    async getDataRandom(): Promise<Model> {
-        const data = await this.getAllData();
-        console.log(data)
-        const randomIndex = Math.floor(Math.random() * data.length);
-        return data[randomIndex];
-    }
 
     async addData(data: Model): Promise<Model> {
-        const currentData = [...dataFile];
+        const currentData = await this.getAllData(); // ← lecture dynamique à jour
         currentData.push(data);
         await fs.writeFile(this.filePath, JSON.stringify(currentData, null, 2));
         return data;
     }
+
 }

@@ -13,17 +13,16 @@ export class CarambarController {
         return this._carambarService.getAllData();
     }
 
+    @Get('random')
+    getDataRandom() {
+        return this._carambarService.getDataRandom();
+
+    }
     @Get(':id')
     getById(@Param('id') id: string): Promise<Model | undefined> {
         return this._carambarService.getById(id);
     }
 
-    @Get('random')
-    getDataRandom(): Promise<Model> {
-
-        console.log('Avant appel du service');
-        return this._carambarService.getDataRandom();
-    }
 
     @Post('add')
     async addData(@Body() model: Model) {
