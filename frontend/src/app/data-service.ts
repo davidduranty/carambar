@@ -12,6 +12,7 @@ export class DataService {
 
   async getDataRandom(): Promise<Model | undefined> {
     try {
+      console.log("Appel API vers /carambar/random");
       const response = await fetch('https://carambar-backend-zm4k.onrender.com/carambar/random');
       if (response.ok) {
         this.model = await response.json();
