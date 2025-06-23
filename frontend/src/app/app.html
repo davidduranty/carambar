@@ -7,9 +7,19 @@
   @if (models) {
   <div class="models">
     <p class="p1">{{models.question}}</p>
-    <p class="p2">{{models.answer}}</p>
+    <!-- <p class="p2">{{models.answer}}</p> -->
+    @if (voirReponse) {
+    <p class="p2"><strong></strong> {{ models.answer }}</p>
+    }
   </div>
   }
+  <div class="btn">
+    <button (click)="voirReponse = !voirReponse">
+      {{ voirReponse ? 'Masquer la réponse' : 'Voir la réponse' }}
+    </button>
+  </div>
+
+
   <div class="btn">
     <button (click)="change()" class="">
       Nouvelle Blague 🍬

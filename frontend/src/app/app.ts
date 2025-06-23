@@ -16,6 +16,7 @@ export class App implements OnInit {
   models: Model | undefined;
 
   private dataService = inject(DataService);
+  voirReponse = false;
   ngOnInit(): void {
     this.change();
   }
